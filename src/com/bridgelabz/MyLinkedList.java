@@ -1,5 +1,7 @@
 package com.bridgelabz;
 
+import org.w3c.dom.Node;
+
 public class MyLinkedList {
     public INode head;
     public INode tail;
@@ -40,6 +42,21 @@ public class MyLinkedList {
         newNode.setNext(tempNode);
     }
 
+    /* This method is used for deleting the first node */
+    public void popFirst() {
+        if(head !=null)
+            this.head = head.getNext();
+    }
+
+    /* Method is used for deleting the last node */
+    public void popLast() {
+        INode tempNode = head;
+        while (tempNode.getNext() != (tail)) {
+            tempNode = tempNode.getNext();
+        }
+        this.tail=tempNode;
+        tempNode.setNext(null);
+    }
     /* Method to get the position of an element*/
     public void searchElement() {
         if (head == null)
@@ -71,6 +88,16 @@ public class MyLinkedList {
         System.out.println("The node with key values 30 is at position" + position + " ");
     }
 
+    /* This method is used for deleting a key at particular position*/
+    public void delete(int position){
+        MyNode previousNode = (MyNode) head;
+        MyNode currentNode = (MyNode) head;
+        for (int i = 0; i < position; i++) {
+            previousNode = currentNode;
+            currentNode = (MyNode) currentNode.next;
+        }
+        previousNode.next = currentNode.next;
+    }
 
     public void printMyNodes() {
         StringBuilder myNodes = new StringBuilder("My Nodes : ");
