@@ -56,6 +56,20 @@ public class MyLinkedList {
             }
         }
     }
+    /* This method is used for inserting a new key value at particular position  */
+    public void insert(int key, int position) {
+        MyNode newNode = new MyNode(key);
+        MyNode nodeAtCurrentIndex = (MyNode) head;
+
+        int index=0;
+        while(index < position - 1) {
+            nodeAtCurrentIndex = (MyNode) nodeAtCurrentIndex.next;
+            index++;
+        }
+        newNode.next = nodeAtCurrentIndex.next;
+        nodeAtCurrentIndex.next = newNode;
+        System.out.println("The node with key values 30 is at position" + position + " ");
+    }
 
 
     public void printMyNodes() {
